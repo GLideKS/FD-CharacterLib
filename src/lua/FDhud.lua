@@ -1,6 +1,4 @@
 local function FDLives(v, p)
-	if not (p.mo and FDChar[p.mo.skin]) then return end
-	if (FDChar[p.mo.skin] and FDChar[p.mo.skin].fdhud == false) then return end
 	if (p.powers[pw_carry] == CR_NIGHTSMODE) then return end
 	if (maptol & TOL_NIGHTS) then return end
 	if G_RingSlingerGametype() then return end
@@ -23,7 +21,7 @@ local function FDLives(v, p)
 		y = 161+(minimal and 6 or 0)
 	}
 	
-	local graphic_name = fdchar.name_graphic and v.cachePatch(fdchar.name_graphic)
+	local graphic_name = fdchar and fdchar.name_graphic and v.cachePatch(fdchar.name_graphic)
 	local alt_name = skins[p.mo.skin].hudname or skins[p.mo.skin].realname or skins[p.mo.skin].name
 	
 	if graphic_name then
