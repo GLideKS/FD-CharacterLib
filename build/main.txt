@@ -1,0 +1,3 @@
+$basepath src/
+$output out/L_FDCharLib-v1.1.pk3
+**
