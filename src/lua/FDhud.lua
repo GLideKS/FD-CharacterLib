@@ -55,7 +55,7 @@ addHook("HUD", function(v, p)
 		return
 	end
 	
-	if FDChar[p.mo.skin] and FDChar[p.mo.skin].fdhud != false then
+	if (FDChar[p.mo.skin] and FDChar[p.mo.skin].fdhud != false) or forcehud then
 		if customhud.CheckType("lives") == "vanilla" then
 			customhud.SetupItem("lives", "FDFeatures")
 		end
