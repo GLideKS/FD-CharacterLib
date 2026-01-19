@@ -12,6 +12,7 @@ local function FDLives(v, p)
 	if dnum == nil then dnum = v.drawNum end
 	if dscaled == nil then dscaled = v.drawScaled end
 	
+	local minimal = CV_FindVar("fdlib_minimalhud").value
 	local fdchar = FDChar[p.mo.skin]
 	local flags = V_SNAPTOLEFT|V_SNAPTOBOTTOM|V_PERPLAYER|V_HUDTRANS
 	
@@ -57,6 +58,8 @@ local function FDLives(v, p)
 end
 
 addHook("HUD", function(v, p)
+	local forcehud = CV_FindVar("fdlib_forceliveshud").value
+	
 	if not p.mo then
 		if customhud.CheckType("lives") == "FDFeatures" then
 			customhud.SetupItem("lives", "vanilla")
