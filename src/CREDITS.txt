@@ -1,0 +1,6 @@
+Lua Scripting, some replicated name fonts and addon owner: GLide KS
+Minor lua assistance: Romoney5
+CustomHUD Library by: SkyDusk
+Assets from: SRB2 Final Demo (SRB2 v1.09.4)
+
+This addon is open assets, feel free to use it in your addons!
