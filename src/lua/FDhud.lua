@@ -9,13 +9,18 @@ local function FDLives(v, p)
 	local flags = V_SNAPTOLEFT|V_SNAPTOBOTTOM|V_PERPLAYER|V_HUDTRANS
 	
 	--Face graphic
+	local fpatch = {
+		x = 16,
+		y = 161+(minimal and 16 or 0)
+	}
+
 	local face = v.getSprite2Patch(p.mo.skin, SPR2_XTRA, (p.powers[pw_super] != 0), 0, 0)
-	v.drawScaled(16*FRACUNIT, 161*FRACUNIT, 1*FRACUNIT, face, flags, v.getColormap(p.mo.skin, p.mo.color))
+	v.drawScaled(fpatch.x*FU, fpatch.y*FU, (minimal and FU/2) or FU, face, flags, v.getColormap(p.mo.skin, p.mo.color))
 	
 	--Graphic Name
 	local gname = {
-		x = 53,
-		y = 161
+		x = 53-(minimal and 37 or 0),
+		y = 161+(minimal and 6 or 0)
 	}
 	
 	local graphic_name = fdchar.name_graphic and v.cachePatch(fdchar.name_graphic)
@@ -29,10 +34,10 @@ local function FDLives(v, p)
 	
 	--Lives X
 	local livex = v.cachePatch("STFINLX")
-	v.draw(57, 185, livex, flags)
+	v.draw(57-(minimal and 21 or 0), 185, livex, flags)
 	
 	--Lives count
-	local x,y = 89,182
+	local x,y = 89-(minimal and 21 or 0),182
 	local spacing = x - 8
 	
 	if p.lives <= 99 then
