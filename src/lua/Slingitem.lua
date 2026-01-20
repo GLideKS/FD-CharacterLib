@@ -15,7 +15,7 @@ addHook("PostThinkFrame", function()
 if gamestate != GS_LEVEL then return end
 for mo in mobjs.iterate() do
 	if mo.type != MT_REDRING then continue end
-	if mo.valid and mo.target
+	if mo.valid and mo.target then
 		local fdchar = FDChar[mo.target.skin]
 		local has_slingitem = (fdchar and fdchar.slingitem)
 		if has_slingitem then
@@ -49,7 +49,7 @@ addHook("PlayerThink", function(p)
 	
 	--Shoot it
 	if not p.weapondelay
-	and ((cmd.buttons & BT_ATTACK) and not (p.lastbuttons & BT_ATTACK))
+	and ((cmd.buttons & BT_ATTACK) and not (p.lastbuttons & BT_ATTACK)) then
 		P_SpawnPlayerMissile(pmo, slingitem or MT_REDRING)
 		p.rings = $-1
 		p.weapondelay = TICRATE/4

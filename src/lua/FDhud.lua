@@ -71,7 +71,7 @@ addHook("HUD", function(v, p)
 		if customhud.CheckType("lives") == "vanilla" then
 			customhud.SetupItem("lives", "FDFeatures")
 		end
-	elseif customhud.CheckType("lives") == "FDFeatures"
+	elseif customhud.CheckType("lives") == "FDFeatures" then
 		customhud.SetupItem("lives", "vanilla")
 	end
 end)
