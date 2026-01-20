@@ -117,6 +117,42 @@ local function PreThinkFrame()
     end
 end
 
+local function PostThink()
+	if gamestate != GS_LEVEL then return end
+    for p in players.iterate do
+        if not (p.mo and p.mo.valid) then continue end
+		if p.exiting then continue end
+		if not (FDChar[p.mo.skin] and FDChar[p.mo.skin].old_ability) then continue end
+
+		-- CA_SLOWFALL and CA_FLOAT doesn't switch to walk/run animations when using the ability
+		if (p.charability == CA_SLOWFALL or p.charability == CA_FLOAT) then
+			if (p.pflags & PF_THOKKED) then
+				if (p.charflags & SF_NOJUMPSPIN) then
+					if p.mo.momz <= 0 then
+						if p.mo.state != S_PLAY_FALL then p.mo.state = S_PLAY_FALL end
+					else p.mo.state = S_PLAY_SPRING end
+				elseif p.mo.state != S_PLAY_ROLL then p.mo.state = S_PLAY_ROLL
+				end
+			end
+		end
+	end
+end
+
+local function CanDamage(p)
+	if not (p.mo and p.mo.valid) then return end
+	if not (FDChar[p.mo.skin] and FDChar[p.mo.skin].old_ability) then return end
+
+	--Slowfall is still able to damage pre 2.2
+	if p.charability == CA_SLOWFALL then
+		if not (p.charflags & SF_NOJUMPDAMAGE)
+		and (p.pflags & PF_THOKKED) then
+			return true
+		end
+	end
+end
+
 addHook("PreThinkFrame", PreThinkFrame)
+addHook("PostThinkFrame", PostThink)
 addHook("JumpSpecial", JumpThinker)
 addHook("AbilitySpecial", AbilitySpecial)
+addHook("PlayerCanDamage", CanDamage)
