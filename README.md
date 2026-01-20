@@ -1,6 +1,6 @@
 # F.D Character Library
 
-This addon brings a list of scripts that replicates character features removed since SRB2 v2.0 release. Such as:
+This addon brings a list of scripts for Sonic Robo Blast 2 v2.2 that replicates character features removed since SRB2 v2.0 release. Such as:
 - Taunts
 - Custom slingitem. 
 - Other replicas like skipping super transformation frames and using walking frames as the spring animation since those are present in Final Demo under certain modding conditions.
