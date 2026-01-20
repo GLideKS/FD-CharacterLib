@@ -1,0 +1,9 @@
+{
+    "Lua.diagnostics.disable": [
+        "undefined-global",
+        "missing-parameter",
+        "missing-fields",
+        "undefined-field",
+        "inject-field"
+    ]
+}

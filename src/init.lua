@@ -20,6 +20,7 @@ if not FDLib_loaded then
 	dofile(FDCharLib_root.."Console")
 	dofile(FDCharLib_root.."FDhud")
 	dofile(FDCharLib_root.."Old Anims")
+	dofile(FDCharLib_root.."Old Abilities")
 	dofile(FDCharLib_root.."Slingitem")
 	dofile(FDCharLib_root.."Taunts")
 	
