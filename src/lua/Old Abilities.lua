@@ -3,7 +3,7 @@ local function JumpThinker(p)
 	if not (FDChar[p.mo.skin] and FDChar[p.mo.skin].old_ability) then return end
 
 	local mo = p.mo
-	
+
 	--Old CA_GLIDEANDCLIMB from Ugly Knuckles v4.1 by GXP3000
 	if p.charability == CA_GLIDEANDCLIMB then
 		if (p.pflags & PF_GLIDING) then
@@ -23,7 +23,7 @@ local function JumpThinker(p)
 			else
 				P_InstaThrust(p.mo, p.mo.angle - leeway, ((p.actionspd*(p.powers[pw_super] and 80 or 40)) + p.glidetime * 1500)/TICRATE)
 			end
-				
+
 			p.glidetime = $ + 1
 
 			if not (p.pflags & PF_JUMPDOWN) then -- If not holding the jump button

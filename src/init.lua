@@ -1,6 +1,6 @@
 /*---F.D Character Library v1.1 by GLide KS---*/
 
---set this if you have FD Char Lib inside a subfolder. 
+--set this if you have FD Char Lib inside a subfolder.
 --remember to end it with /
 local FDCharLib_root = ""
 
@@ -23,7 +23,7 @@ if not FDLib_loaded then
 	dofile(FDCharLib_root.."Old Abilities")
 	dofile(FDCharLib_root.."Slingitem")
 	dofile(FDCharLib_root.."Taunts")
-	
+
 	print("\131F.D Character Library loaded sucessfully!")
 	FDLib_loaded = true
 else

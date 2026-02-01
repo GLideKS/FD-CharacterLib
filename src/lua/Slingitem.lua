@@ -42,11 +42,11 @@ addHook("PlayerThink", function(p)
 	local cmd = p.cmd
 	local fdchar = FDChar[pmo.skin]
 	local slingitem = fdchar and fdchar.slingitem
-	
+
 	if not (fdchar and fdchar.ringslinger) then return end
 	if G_RingSlingerGametype() then return end
 	if p.exiting then return end
-	
+
 	--Shoot it
 	if not p.weapondelay
 	and ((cmd.buttons & BT_ATTACK) and not (p.lastbuttons & BT_ATTACK)) then
