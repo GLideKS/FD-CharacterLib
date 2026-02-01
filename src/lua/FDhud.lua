@@ -1,6 +1,7 @@
 local d
 local dnum
 local dscaled
+local customfontstring = customhud.CustomFontString
 
 local function FDLives(v, p)
 	if (p.powers[pw_carry] == CR_NIGHTSMODE) then return end
@@ -37,7 +38,7 @@ local function FDLives(v, p)
 	if graphic_name then
 		d(gname.x, gname.y, v.cachePatch(fdchar.name_graphic), flags)
 	else
-		customhud.CustomFontString(v, gname.x, gname.y, string.upper(alt_name), "FDNAM", flags)
+		customfontstring(v, gname.x, gname.y, string.upper(alt_name), "FDNAM", flags)
 	end
 
 	--Lives X
