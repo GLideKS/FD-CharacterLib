@@ -3,6 +3,8 @@ local dnum
 local dscaled
 local customfontstring = customhud.CustomFontString
 
+customhud.SetupFont("FDNAM", 0, 4) --Font for the alternate name graphic to be used
+
 local function FDLives(v, p)
 	if (p.powers[pw_carry] == CR_NIGHTSMODE) then return end
 	if (maptol & TOL_NIGHTS) then return end

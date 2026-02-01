@@ -16,7 +16,6 @@ if not FDChar then rawset(_G, "FDChar", {}) end
 if not FDLib_loaded then rawset(_G, "FDLib_loaded", false) end
 
 if not FDLib_loaded then
-	dofile(FDCharLib_root.."Font")
 	dofile(FDCharLib_root.."Console")
 	dofile(FDCharLib_root.."FDhud")
 	dofile(FDCharLib_root.."Old Anims")
