@@ -1,4 +1,4 @@
-/*---F.D Character Library v1.1 by GLide KS---*/
+/*---F.D Character Library v1.3 by GLide KS---*/
 
 --set this if you have FD Char Lib inside a subfolder.
 --remember to end it with /
