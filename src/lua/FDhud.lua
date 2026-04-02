@@ -9,6 +9,7 @@ local function FDLives(v, p)
 	if (p.powers[pw_carry] == CR_NIGHTSMODE) then return end
 	if (maptol & TOL_NIGHTS) then return end
 	if G_RingSlingerGametype() then return end
+	local skin = skins[p.skin].name
 
 	--Assign drawing functions to locals for optimization
 	if d == nil then d = v.draw end
@@ -16,7 +17,7 @@ local function FDLives(v, p)
 	if dscaled == nil then dscaled = v.drawScaled end
 
 	local minimal = CV_FindVar("fdlib_minimalhud").value
-	local fdchar = FDChar[p.mo.skin]
+	local fdchar = FDChar[skin]
 	local flags = V_SNAPTOLEFT|V_SNAPTOBOTTOM|V_PERPLAYER|V_HUDTRANS
 
 	--Face graphic
@@ -25,8 +26,8 @@ local function FDLives(v, p)
 		y = 161+(minimal and 16 or 0)
 	}
 
-	local face = v.getSprite2Patch(p.mo.skin, SPR2_XTRA, (p.powers[pw_super] != 0), 0, 0)
-	dscaled(fpatch.x*FU, fpatch.y*FU, (minimal and FU/2) or FU, face, flags, v.getColormap(p.mo.skin, p.mo.color))
+	local face = v.getSprite2Patch(skin, SPR2_XTRA, (p.powers[pw_super] != 0), 0, 0)
+	dscaled(fpatch.x*FU, fpatch.y*FU, (minimal and FU/2) or FU, face, flags, v.getColormap(skin, p.skincolor or p.mo.color))
 
 	--Graphic Name
 	local gname = {
@@ -35,7 +36,7 @@ local function FDLives(v, p)
 	}
 
 	local graphic_name = fdchar and fdchar.name_graphic and v.cachePatch(fdchar.name_graphic)
-	local alt_name = skins[p.mo.skin].hudname or skins[p.mo.skin].realname or skins[p.mo.skin].name
+	local alt_name = skins[skin].hudname or skins[skin].realname or skins[skin].name
 
 	if graphic_name then
 		d(gname.x, gname.y, v.cachePatch(fdchar.name_graphic), flags)
@@ -62,15 +63,9 @@ end
 
 addHook("HUD", function(v, p)
 	local forcehud = CV_FindVar("fdlib_forceliveshud").value
+	local skin = skins[p.skin].name
 
-	if not p.mo then
-		if customhud.CheckType("lives") == "FDFeatures" then
-			customhud.SetupItem("lives", "vanilla")
-		end
-		return
-	end
-
-	if (FDChar[p.mo.skin] and FDChar[p.mo.skin].fdhud != false) or forcehud then
+	if (FDChar[skin] and FDChar[skin].fdhud != false) or forcehud then
 		if customhud.CheckType("lives") == "vanilla" then
 			customhud.SetupItem("lives", "FDFeatures")
 		end
