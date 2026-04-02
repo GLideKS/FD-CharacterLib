@@ -34,7 +34,7 @@ local function FDLives(v, p)
 	}
 
 	local face = getSprite2Patch(skin, SPR2_XTRA, (p.powers[pw_super] != 0), 0, 0)
-	dscaled(fpatch.x*FU, fpatch.y*FU, (minimal and FU/2) or FU, face, flags, getColormap(skin, p.skincolor or p.mo.color))
+	dscaled(fpatch.x*FU, fpatch.y*FU, (minimal and FU/2) or FU, face, flags, getColormap(skin, (p.mo and p.mo.color) or p.skincolor))
 
 	--Graphic Name
 	local gname = {
