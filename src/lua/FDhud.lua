@@ -57,8 +57,9 @@ local function FDLives(v, p)
 
 	--Lives count
 	local x,y = 89-(minimal and 21 or 0),182
+	local infinite_lives = p.lives == INFLIVES or (multiplayer and CV_FindVar("cooplives").value == 0)
 
-	local livenum = ((p.lives == INFLIVES) and 99) or p.lives or 0
+	local livenum = (infinite_lives and 99) or p.lives or 0
 	dnum(x, y, livenum, flags|V_OLDSPACING)
 end
 
